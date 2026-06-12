@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 @RestController
-@CrossOrigin(origins = "http://localhost:5173") // Erlaubt genau deinem Vue-Frontend den Zugriff!
+@CrossOrigin(origins = "*") // Erlaubt genau deinem Vue-Frontend den Zugriff!
 public class ProductController {
 
     @Autowired
