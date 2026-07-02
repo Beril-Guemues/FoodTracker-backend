@@ -1,4 +1,4 @@
-package htw.webtech.foodtracker;
+package htw.webtech.foodtracker.userprofile;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 

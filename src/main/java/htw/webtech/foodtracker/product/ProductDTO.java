@@ -1,32 +1,25 @@
-package htw.webtech.foodtracker;
+package htw.webtech.foodtracker.product;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-
-@Entity
-public class Product {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+public class ProductDTO {
     private Long id;
-
     private String name;
     private int calories;
     private double protein;
     private double carbs;
 
-    public Product() {}
+    // Leerer Konstruktor (für JSON Serialisierung)
+    public ProductDTO() {}
 
-    public Product(Long id, String name, int calories, double protein, double carbs) {
-        this.id = id;
-        this.name = name;
-        this.calories = calories;
-        this.protein = protein;
-        this.carbs = carbs;
+    // Konstruktor aus Entity
+    public ProductDTO(Product product) {
+        this.id = product.getId();
+        this.name = product.getName();
+        this.calories = product.getCalories();
+        this.protein = product.getProtein();
+        this.carbs = product.getCarbs();
     }
 
+    // Getter und Setter
     public Long getId() { return id; }
     public void setId(Long id) { this.id = id; }
 

@@ -1,5 +1,6 @@
-package htw.webtech.foodtracker;
+package htw.webtech.foodtracker.goal;
 
+import htw.webtech.foodtracker.userprofile.UserProfile;
 import jakarta.persistence.*;
 
 @Entity

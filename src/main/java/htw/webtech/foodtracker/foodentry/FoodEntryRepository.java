@@ -1,4 +1,4 @@
-package htw.webtech.foodtracker;
+package htw.webtech.foodtracker.foodentry;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import java.time.LocalDate;

@@ -1,5 +1,6 @@
-package htw.webtech.foodtracker;
+package htw.webtech.foodtracker.foodentry;
 
+import htw.webtech.foodtracker.product.Product;
 import jakarta.persistence.*;
 import java.time.LocalDate;
 

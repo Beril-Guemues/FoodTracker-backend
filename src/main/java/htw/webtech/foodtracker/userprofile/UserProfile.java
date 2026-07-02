@@ -1,4 +1,4 @@
-package htw.webtech.foodtracker;
+package htw.webtech.foodtracker.userprofile;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
