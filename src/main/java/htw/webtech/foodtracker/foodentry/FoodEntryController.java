@@ -1,5 +1,7 @@
 package htw.webtech.foodtracker.foodentry;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.web.bind.annotation.*;
@@ -11,50 +13,54 @@ import java.util.stream.Collectors;
 @CrossOrigin(origins = "*")
 public class FoodEntryController {
 
+    private static final Logger logger = LoggerFactory.getLogger(FoodEntryController.class);
+
     @Autowired
     private FoodEntryService service;
 
-    // 1. ALLE Einträge (mit DTO)
     @GetMapping("/foodentries")
     public List<FoodEntryDTO> getAllEntries() {
+        logger.info("GET /foodentries - Alle FoodEntries werden abgerufen");
         return service.getAllEntries().stream()
                 .map(FoodEntryDTO::new)
                 .collect(Collectors.toList());
     }
 
-    // 2. Einträge nach Datum (mit DTO)
     @GetMapping("/foodentries/date")
-    public List<FoodEntryDTO> getEntriesByDate(
-            @RequestParam @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate date) {
+    public List<FoodEntryDTO> getEntriesByDate(@RequestParam @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate date) {
+        logger.info("GET /foodentries/date - FoodEntries für Datum werden abgerufen: {}", date);
         return service.getEntriesByDate(date).stream()
                 .map(FoodEntryDTO::new)
                 .collect(Collectors.toList());
     }
 
-    // 3. Eintrag nach ID (mit DTO)
     @GetMapping("/foodentries/{id}")
     public FoodEntryDTO getEntryById(@PathVariable Long id) {
+        logger.info("GET /foodentries/{} - FoodEntry mit ID wird abgerufen", id);
         FoodEntry entry = service.getEntryById(id);
         return new FoodEntryDTO(entry);
     }
 
-    // 4. Eintrag erstellen (mit DTO)
     @PostMapping("/foodentries")
     public FoodEntryDTO createEntry(@RequestBody FoodEntry entry) {
+        logger.info("POST /foodentries - Neuer FoodEntry wird erstellt: {}", entry);
         FoodEntry saved = service.saveEntry(entry);
+        logger.info("POST /foodentries - FoodEntry erfolgreich erstellt mit ID: {}", saved.getId());
         return new FoodEntryDTO(saved);
     }
 
-    // 5. Eintrag aktualisieren (mit DTO)
     @PutMapping("/foodentries/{id}")
     public FoodEntryDTO updateEntry(@PathVariable Long id, @RequestBody FoodEntry entry) {
+        logger.info("PUT /foodentries/{} - FoodEntry wird aktualisiert: {}", id, entry);
         FoodEntry updated = service.updateEntry(id, entry);
+        logger.info("PUT /foodentries/{} - FoodEntry erfolgreich aktualisiert", id);
         return new FoodEntryDTO(updated);
     }
 
-    // 6. Eintrag löschen
     @DeleteMapping("/foodentries/{id}")
     public void deleteEntry(@PathVariable Long id) {
+        logger.info("DELETE /foodentries/{} - FoodEntry wird gelöscht", id);
         service.deleteEntry(id);
+        logger.info("DELETE /foodentries/{} - FoodEntry erfolgreich gelöscht", id);
     }
 }
