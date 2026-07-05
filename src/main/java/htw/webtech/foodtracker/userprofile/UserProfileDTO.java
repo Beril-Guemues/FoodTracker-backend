@@ -6,7 +6,6 @@ public class UserProfileDTO {
     private String gender;
     private int age;
     private double height;
-    private double targetWeight;
     private double calorieNeed;
     private double waterNeed;
 
@@ -18,7 +17,6 @@ public class UserProfileDTO {
         this.gender = profile.getGender();
         this.age = profile.getAge();
         this.height = profile.getHeight();
-        this.targetWeight = profile.getTargetWeight();
         this.calorieNeed = calculateCalorieNeed(profile);
         this.waterNeed = calculateWaterNeed(profile);
     }
@@ -53,8 +51,6 @@ public class UserProfileDTO {
     public double getHeight() { return height; }
     public void setHeight(double height) { this.height = height; }
 
-    public double getTargetWeight() { return targetWeight; }
-    public void setTargetWeight(double targetWeight) { this.targetWeight = targetWeight; }
 
     public double getCalorieNeed() { return calorieNeed; }
     public void setCalorieNeed(double calorieNeed) { this.calorieNeed = calorieNeed; }

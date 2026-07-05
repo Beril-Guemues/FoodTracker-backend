@@ -16,17 +16,15 @@ public class UserProfile {
     private String gender;       // "male" / "female"
     private int age;
     private double height;       // in cm
-    private double targetWeight; // in kg
 
     public UserProfile() {}
 
-    public UserProfile(Long id, double weight, String gender, int age, double height, double targetWeight) {
+    public UserProfile(Long id, double weight, String gender, int age, double height) {
         this.id = id;
         this.weight = weight;
         this.gender = gender;
         this.age = age;
         this.height = height;
-        this.targetWeight = targetWeight;
     }
 
     public Long getId() { return id; }
@@ -44,6 +42,4 @@ public class UserProfile {
     public double getHeight() { return height; }
     public void setHeight(double height) { this.height = height; }
 
-    public double getTargetWeight() { return targetWeight; }
-    public void setTargetWeight(double targetWeight) { this.targetWeight = targetWeight; }
 }
