@@ -24,6 +24,8 @@ public class ProductController {
                 .collect(Collectors.toList());
     }
 
+    // /recipes Endpunkt wurde ENTFERNT!
+
     @GetMapping("/products/search")
     public List<ProductDTO> searchProducts(@RequestParam(required = false) String q) {
         logger.info("GET /products/search - Suche nach: {}", q);

@@ -35,7 +35,6 @@ public class UserProfileService {
         existing.setGender(profileDetails.getGender());
         existing.setAge(profileDetails.getAge());
         existing.setHeight(profileDetails.getHeight());
-        existing.setTargetWeight(profileDetails.getTargetWeight());
 
         validateProfile(existing);
         return repository.save(existing);
@@ -83,8 +82,6 @@ public class UserProfileService {
         if (profile.getHeight() <= 0) {
             throw new IllegalArgumentException("Height must be greater than 0");
         }
-        if (profile.getTargetWeight() <= 0) {
-            throw new IllegalArgumentException("Target weight must be greater than 0");
-        }
+
     }
 }

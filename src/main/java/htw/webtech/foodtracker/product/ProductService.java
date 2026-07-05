@@ -10,18 +10,15 @@ public class ProductService {
     @Autowired
     private ProductRepository repository;
 
-    // 1. Alle Produkte
     public List<Product> getAllProducts() {
         return repository.findAll();
     }
 
-    // 2. Produkt nach ID
     public Product getProductById(Long id) {
         return repository.findById(id)
                 .orElseThrow(() -> new RuntimeException("Product not found with id: " + id));
     }
 
-    // 3. Produkte suchen
     public List<Product> searchProducts(String query) {
         if (query == null || query.trim().isEmpty()) {
             return repository.findAll();
@@ -29,26 +26,21 @@ public class ProductService {
         return repository.findByNameContainingIgnoreCase(query);
     }
 
-    // 4. Produkt speichern (mit Validierung)
     public Product saveProduct(Product product) {
         validateProduct(product);
         return repository.save(product);
     }
 
-    // 5. Produkt aktualisieren
     public Product updateProduct(Long id, Product productDetails) {
         Product existing = getProductById(id);
-
         existing.setName(productDetails.getName());
         existing.setCalories(productDetails.getCalories());
         existing.setProtein(productDetails.getProtein());
         existing.setCarbs(productDetails.getCarbs());
-
         validateProduct(existing);
         return repository.save(existing);
     }
 
-    // 6. Produkt löschen
     public void deleteProduct(Long id) {
         if (!repository.existsById(id)) {
             throw new RuntimeException("Product not found with id: " + id);
@@ -56,7 +48,8 @@ public class ProductService {
         repository.deleteById(id);
     }
 
-    // 7. Validierung (zentral)
+    // getAllRecipes() wurde ENTFERNT!
+
     private void validateProduct(Product product) {
         if (product.getName() == null || product.getName().trim().isEmpty()) {
             throw new IllegalArgumentException("Product name cannot be empty");

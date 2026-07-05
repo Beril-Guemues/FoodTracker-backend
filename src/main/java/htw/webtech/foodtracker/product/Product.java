@@ -17,6 +17,8 @@ public class Product {
     private double protein;
     private double carbs;
 
+    // isRecipe wurde ENTFERNT!
+
     public Product() {}
 
     public Product(Long id, String name, int calories, double protein, double carbs) {
@@ -27,6 +29,7 @@ public class Product {
         this.carbs = carbs;
     }
 
+    // Getter und Setter
     public Long getId() { return id; }
     public void setId(Long id) { this.id = id; }
 

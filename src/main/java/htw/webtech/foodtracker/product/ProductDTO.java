@@ -7,10 +7,10 @@ public class ProductDTO {
     private double protein;
     private double carbs;
 
-    // Leerer Konstruktor (für JSON Serialisierung)
+    // isRecipe wurde ENTFERNT!
+
     public ProductDTO() {}
 
-    // Konstruktor aus Entity
     public ProductDTO(Product product) {
         this.id = product.getId();
         this.name = product.getName();

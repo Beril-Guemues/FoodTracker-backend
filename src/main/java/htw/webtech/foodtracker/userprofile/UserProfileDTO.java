@@ -2,13 +2,13 @@ package htw.webtech.foodtracker.userprofile;
 
 public class UserProfileDTO {
     private Long id;
-    private double weight;       // in kg
-    private String gender;       // "male" / "female"
+    private double weight;
+    private String gender;
     private int age;
-    private double height;       // in cm
-    private double targetWeight; // in kg
-    private double calorieNeed;  // berechnet ✅ NEU
-    private double waterNeed;    // berechnet ✅ NEU
+    private double height;
+    private double targetWeight;
+    private double calorieNeed;
+    private double waterNeed;
 
     public UserProfileDTO() {}
 
@@ -19,12 +19,10 @@ public class UserProfileDTO {
         this.age = profile.getAge();
         this.height = profile.getHeight();
         this.targetWeight = profile.getTargetWeight();
-        // Berechnungen direkt im DTO
         this.calorieNeed = calculateCalorieNeed(profile);
         this.waterNeed = calculateWaterNeed(profile);
     }
 
-    // Hilfsmethoden für Berechnungen (kopiert aus Service)
     private double calculateCalorieNeed(UserProfile profile) {
         double bmr;
         if ("male".equalsIgnoreCase(profile.getGender())) {
@@ -32,11 +30,11 @@ public class UserProfileDTO {
         } else {
             bmr = 10 * profile.getWeight() + 6.25 * profile.getHeight() - 5 * profile.getAge() - 161;
         }
-        return bmr * 1.2; // sitzende Aktivität
+        return bmr * 1.2;
     }
 
     private double calculateWaterNeed(UserProfile profile) {
-        return profile.getWeight() * 0.035; // in Litern
+        return profile.getWeight() * 0.035;
     }
 
     // Getter und Setter
